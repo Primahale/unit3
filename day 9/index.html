@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="searchTearm" placeholder="search">
+    <button onclick="searchVideo()">search</button>
+    <div id="searchResult"></div>
+</body>
+</html>
+
+
+<script>
+
+    let key = "AIzaSyDQrdfwWvLFb6iLqmnFr1gQyfLag5Wpx7U"
+
+    // const searchVideo = async() => {
+    //     try{
+    //         let userInput = document.getElementById("searchTearm").value;
+    //         // console.log(userInput);
+
+    //         let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${userInput}&key=${key}&type=video&maxResults=25`);
+
+    //         let data = await res.json();
+    //         console.log(data)
+    //     }
+    //     catch(err){
+    //         console.log(err);
+    //     }
+        
+    // }
+
+    let video_http = "https://www.googleapis.com/youtube/v3/videos?";
+    let channel_http = "https://www.googleapis.com/youtube/v3/channels?";
+
+    fetch(vedeo_http + new URLSearchParams({
+        key: key,
+        part:"snippet",
+        chart: 'mostPopuler',
+        maxResults = 50,
+        regionCode = 'IN'
+    }))
+
+    .then(res => res.json())
+    .then(data => {
+        data.items.forEach(item => {
+            getChannelIcon(item);
+        })
+    })
+    .catch(err => console.log(err));
+
+
+</script>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throw dice</title>
+    <style>
+        #container{
+            width: 50%;
+            /* border: 1px solid; */
+            text-align: center;
+            margin: auto;
+            margin-top: 150px;
+        }
+        #button{
+            padding: 20px 40px;
+            background-color: black;
+            color: blanchedalmond;
+            font-weight: bold;
+            
+        }
+        button:hover{
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+            cursor: pointer;
+        }
+        #bag{
+            height: 100px;
+            width: 100px;
+            /* border: 1px solid; */
+            margin: auto;
+            margin-top: 2%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            /* background-color: yellow; */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <button id="button">Throw dice</button>
+        <div>
+            <p id="bag"></p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var dice = {
+        sides : 6,
+        throw: function (){
+            var x = Math.floor(Math.random()*this.sides);
+
+           
+            return x+1;
+        },
+//         throw: function(min, max) {
+//          min = Math.ceil(min);
+//          max = Math.floor(max);
+//         return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+// }
+    };
+
+    var button = document.getElementById("button");
+
+    button.onclick = function(){
+        var output = dice.throw(1,6);
+        document.getElementById("bag").textContent= output;
+        if(output == 1){
+            document.getElementById("bag").style.color = "yellow";
+        }
+        else if(output == 6){
+            document.getElementById("bag").style.color = "green";
+        }
+        else{
+            document.getElementById("bag").style.color = "red";
+        }
+        // numbers(output);
+      
+    };
+</script>

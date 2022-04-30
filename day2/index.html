@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        #container{
+            height: 200px;
+            width: 400px;
+            margin: auto;
+            margin-top: 0px;
+            border: 1px solid gray;
+            padding: 5px;
+            background-color: rgb(215, 215, 247)
+        }
+        h1{
+            margin-top: 50px;
+            text-align: center;
+        
+        }
+        #info{
+            display: flex;
+        }
+        #stdName{
+            height: 150px;
+            width: 40%;
+            /* padding: 5px; */
+            /* margin-left: 10px; */
+            
+            /* border: 1px solid red; */
+        }
+        p{
+            font-weight: bold;
+            /* font-size: medium; */
+            font-size: 18px;
+            
+        }
+        #box{
+            height: 150px;
+            width: 60%;
+            margin-left: 10px;
+            /* border: 1px solid red; */
+            
+        }
+        input{
+            margin-top: 15px;
+            width: 100%;
+            height: 17%;
+            border:  0px;
+            background-color: rgb(167, 167, 202);
+        }
+        #button{
+            margin: auto;
+            margin-left: 160px;
+            margin-top: 10px;
+            width: 80px;
+            height: 30px;
+            background-color: black;
+            color: whitesmoke;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            border-radius: 5px;
+            /* justify-content: center; */
+        }
+        #button:hover{
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+            /* border-radius: 5px; */
+            background-color: rgb(56, 55, 55);
+        }
+    </style>
+</head>
+<body>
+    <div> <h1>Form</h1></div>
+   
+    <div id="container">
+     
+        <form id="info">
+           <div id="StdName">
+               <p>Student Name :-</p>
+               <p>Mob Number :-</p>
+               <p>City :-</p>
+           </div>
+           <div id="box">
+               <input type="text" id="name" placeholder="Enter Name"    >
+               <input type="number" id="number" placeholder="Enter Valid Number">
+               <input type="text" id="city" placeholder="Enter Your City">
+           </div>
+         
+        </form>
+        <!-- <input type="submit" value="submit" id="button"> -->
+        <button
+        type ="button"
+        id="button"
+        onclick="data()" 
+        >Submit</button>
+    </div>
+</body>
+</html>
+<script>
+    function data() {
+        var name, number, city,
+        name= document.getElementById("name").value;
+        number = document.getElementById("number").value;
+         city = document.getElementById("city").value;
+
+        var std_record = new Array();
+        std_record = JSON.parse(localStorage.getItem("user")) || [];
+
+        std_record.push({
+            name : name,
+            number : number,
+            city : city
+        });
+        localStorage.setItem("name",name);
+        localStorage.setItem("number",number);
+        localStorage.setItem("city",city);
+
+        localStorage.setItem("user",JSON.stringify(std_record));
+        console.log(std_record)
+    }
+  
+</script>

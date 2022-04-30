@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    let arr2 = new Array("Tom","patlu","Motu"); //this is how Js does it internally
+    console.log("arr2:", arr2);
+
+    function MyArray() {
+    this.length = arguments.length;
+
+    Object.defineProperty(this, "length", {
+    writable: true,
+    enumerable: false,
+    });
+
+    for (let i = 0; i < this.length; i++) {
+    this[i] = arguments[i]; 
+    }
+    }
+
+    MyArray.prototype.पुश = function (x) {
+ 
+
+    this[this.length] = x;
+    this.length++;
+    };
+
+let arr = new MyArray("Tom","patlu","Motu");
+arr.पुश("Dorimone");
+
+
+// MyArray.prototype.reverse.call(arr)
+// let a = arr;
+// arr.reverse(arr)
+
+
+
+console.log("arr:", Object.values(arr));
+console.log("arr[0]:",arr[0]);
+
+
+</script>

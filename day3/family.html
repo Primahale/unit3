@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance</title>
+</head>
+<body>
+    <h2>Inheritance</h2>
+</body>
+</html>
+<script>
+   let grandFather = {
+       Eyecolor : "brown",
+       anger : true,
+   };
+
+   let Father = Object.create(grandFather);
+   Father.kind = true;
+
+   let self = Object.create(grandFather);
+   self.drowing = true;
+   self.ziddi = true;
+
+   console.log("self",self);
+   console.log("Father",Father);
+   
+</script>

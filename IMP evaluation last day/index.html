@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+    #container{
+        width: 100%;
+        display: flex;
+        
+        /* height: 900px; */
+    }
+    #sidebar{
+        width: 19%;
+        border:  1px solid ;
+    }
+    #main{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 3%;
+        padding-left: 2%;
+        
+    }
+    #main>div img{
+        border: 1px solid gray;
+        
+    }
+    #main>div:hover{
+        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    }
+    #sidebar{
+        padding-left: 20px;
+        
+    }
+    #sidebar>div{
+        margin-top: 20px;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: larger;
+    }
+    input{
+        margin-top: 20px;
+    }
+   
+</style>
+<body>
+    <div id="container">
+        <div id="sidebar">
+           
+           
+        </div>
+
+        <div id="main">
+
+        </div>
+    </div>
+</body>
+</html>
+<!-- let url = "https://api.unsplash.com/photos/?client_id=YOUR_ACCESS_KEY" -->
+<!-- let key = "C2Rhg5PEPBxJ5lAWrseILy2JAFNybeKRhO9xTb1zdvM" -->
+<script type="module">
+
+    import sidebar from "./componant/sidebar.js";
+    import { makeAPICall ,appendpictures} from "./script/main.js";
+
+
+    let sidebar_div = document.getElementById("sidebar");
+    // console.log(sidebar)
+    sidebar_div.innerHTML = sidebar();
+
+    let images_data = await makeAPICall("https://api.unsplash.com/photos/?client_id=C2Rhg5PEPBxJ5lAWrseILy2JAFNybeKRhO9xTb1zdvM");
+
+    console.log(images_data);
+
+    let parent = document.getElementById("main");
+    appendpictures(images_data,parent);
+
+
+    let input = document.getElementById("searchbar");
+    input.addEventListener("keypress",(e)=>{
+        if(e.key == "Enter"){
+            let input_value = document.getElementById("searchbar").value;
+            localStorage.setItem("search_term",input_value);
+            window.location.href= "search.html";
+        }
+    });
+
+
+</script>

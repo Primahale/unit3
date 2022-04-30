@@ -1,0 +1,20 @@
+#order-form{
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    margin-top: 80px;
+    /* border: 1px solid red; */
+}
+h1{
+    text-align: center;
+}
+button{
+    margin-left: 90px;
+    height: 30px;
+    width: 90px;
+    background-color: black;
+    color: wheat;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}

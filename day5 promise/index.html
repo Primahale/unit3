@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonald's</title>
+    <style>
+        h1{
+            text-align: center;
+            margin-top: 120px;
+        }
+        #container{
+            height: 200px;
+            width: 400px;
+            margin: auto;
+            margin-top: 50px;
+            /* text-align: center; */
+            /* border: 1px solid ; */
+        }
+       #food{
+            margin-top: 50px;
+            margin-left: 90px;
+       }
+        button{
+            background-color: black;
+            color: blanchedalmond;
+            font-weight: bold;
+            border: none;
+            height: 25px;
+        }
+      
+    </style>
+</head>
+<body>
+  <h1>McDonald</h1>
+    <div id="container">
+        <select name="food" id="food">
+            <option value="">menu Cart</option>
+            <option value="burger">burger</option>
+            <option value="Pizza">Pizza</option>
+            <option value="coffee">Coffee</option>
+            <option value="sandwich">Sandwich</option>
+            <option value="combo">Combo</option>
+        </select>
+        <button onclick="Order()">Order Food</button>
+    </div>
+   
+</body>
+</html>
+<script>
+
+        function Order(){
+            let status = 'Open';
+            let Order = document.getElementById("food").value;
+            // let time = Math.round(Math.random()*5);
+            let message = `Order Is Place Succesfully.`
+            alert(message)
+
+            let food_promise = new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    if(status == 'Open'){
+                       
+                        resolve(`${Order} is here`);
+                    }
+                    else{
+                        reject("It was Closed");
+                    }
+                },5000);
+            });
+
+            food_promise.then(function(res){
+                console.log('res:',res);
+                // eatfood();
+            });
+
+            food_promise.catch(function(err){
+                console.log("err:",err);
+            })
+        }
+
+      
+
+</script>
